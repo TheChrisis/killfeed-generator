@@ -7,6 +7,9 @@ import {
   Image,
   Button,
   useColorMode,
+  VisuallyHidden,
+  Heading,
+  useConst,
 } from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 
@@ -17,23 +20,27 @@ interface NavigationProps {
   title: string;
 }
 
+const headlineMap = {
+  apex: 'Apex Legends',
+};
+
 const logoPath = 'src/assets/logo/';
 
 const Navigation: FC<NavigationProps> = ({ logo, title }) => {
   const { colorMode, toggleColorMode } = useColorMode();
+
+  const headline = useConst(headlineMap[logo]);
+
   return (
-    <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
+    <Box bg={useColorModeValue('whiteAlpha.800', 'blackAlpha.800')}>
       <Container maxW="container.lg">
-        <Flex
-          h={16}
-          alignItems={'center'}
-          justifyContent={'space-between'}
-          marginLeft={-26}
-          marginRight={-26}
-        >
+        <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <Box display={'flex'} alignItems={'center'}>
             <Image src={`${logoPath}${logo}.png`} width="50px" />
-            {title}
+            <Heading as="h1" size="sm">
+              <VisuallyHidden>{headline}</VisuallyHidden>
+              {title}
+            </Heading>
           </Box>
 
           <Flex alignItems={'center'}>

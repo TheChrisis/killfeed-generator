@@ -28,17 +28,12 @@ const App = () => {
       backgroundColor="transparent"
       backgroundRepeat="no-repeat"
       backgroundSize="cover"
-      height="100%"
+      minHeight="100%"
       position="relative"
+      pb={{ base: '100px', md: '70px' }}
     >
       <Navigation title="Killfeed Generator" logo="apex" />
-      <Container
-        maxW="container.lg"
-        bg={useColorModeValue('whiteAlpha.800', 'blackAlpha.800')}
-        borderRadius="xl"
-        padding="5"
-        my="50"
-      >
+      <Container maxW="container.lg" my={50}>
         <KillfeedForm />
       </Container>
       <Footer />

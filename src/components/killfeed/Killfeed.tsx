@@ -1,79 +1,69 @@
-import React, { FC, useRef } from 'react';
+import React from 'react';
 import { Killfeed as KillfeedType } from '../../interfaces/killfeed.interface';
-import { Box, Stack } from '@chakra-ui/layout';
-import { Button } from '@chakra-ui/button';
+import { Box, Stack, Text } from '@chakra-ui/layout';
 import KillfeedItem from './KillfeedItem';
 import { useColorModeValue } from '@chakra-ui/color-mode';
-import html2canvas from 'html2canvas';
+import { useKillfeedComputedProperties } from '../../stores/Killfeed.store';
 
 interface KillfeedProps {
   killfeed: KillfeedType;
+  fileName: string;
 }
 
-const Killfeed: FC<KillfeedProps> = ({ killfeed }) => {
-  const killfeedRef = useRef(null);
+const Killfeed = React.forwardRef<HTMLDivElement, KillfeedProps>(({ killfeed }, ref) => {
+  const { killfeedItemCount } = useKillfeedComputedProperties();
 
-  const generateKillfeedImage = async () => {
-    if (!killfeedRef.current) {
-      return;
-    }
-
-    const style = document.createElement('style');
-    document.head.appendChild(style);
-    style.sheet?.insertRule('body > div:last-child img { display: inline-block; }');
-
-    const canvas = await html2canvas(killfeedRef.current, {
-      backgroundColor: null,
-      logging: true,
-      onclone: (document, element) => {
-        console.log(document, element);
-      },
-    });
-
-    const image = canvas.toDataURL('image/png');
-    const a = document.createElement('a');
-    a.setAttribute('download', 'killfeed.png');
-    a.setAttribute('href', image);
-    a.click();
-    a.remove();
-    style.remove();
-  };
+  const hasNoKillfeedYet = killfeedItemCount === 0;
 
   return (
-    <>
-      {killfeed.length > 0 && (
-        <>
-          <Box
-            backgroundImage={`url(src/assets/backgrounds/kingscanyon.webp)`}
-            backgroundColor="transparent"
-            backgroundRepeat="no-repeat"
-            backgroundSize="cover"
-            alignItems="flex-end"
-            display="flex"
-            flexDirection="column"
-            borderRadius="lg"
-            color={useColorModeValue('white', 'white')}
-          >
-            <Stack
-              width="fit-content"
-              py="20"
-              px="20"
-              alignItems="flex-end"
-              spacing="1px"
-              ref={killfeedRef}
-            >
-              {killfeed.map((killfeed, index) => (
-                <KillfeedItem kill={killfeed} key={index} />
-              ))}
-            </Stack>
-          </Box>
-          <Button onClick={generateKillfeedImage} mt={25}>
-            Download Killfeed
-          </Button>
-        </>
+    <Box
+      backgroundImage={'url(src/assets/backgrounds/kingscanyon.webp)'}
+      backgroundColor="transparent"
+      backgroundRepeat="no-repeat"
+      backgroundPosition="top right"
+      display="flex"
+      flexDirection="column"
+      borderRadius="lg"
+      color={useColorModeValue('white', 'white')}
+      height="500px"
+      overflowY="auto"
+      alignItems={hasNoKillfeedYet ? 'center' : 'flex-end'}
+      justifyContent={hasNoKillfeedYet ? 'center' : undefined}
+    >
+      {hasNoKillfeedYet ? (
+        <Text
+          _light={{
+            bg: 'whiteAlpha.600',
+            color: 'black',
+          }}
+          _dark={{
+            bg: 'blackAlpha.800',
+          }}
+          px="10"
+          py="5"
+          borderRadius="lg"
+          fontSize="2xl"
+          textAlign="center"
+          mx={{ base: 5 }}
+        >
+          The Killfeed is currently empty. <br /> Start building your own Killfeed!
+        </Text>
+      ) : (
+        <Stack
+          width="max-content"
+          py={{ base: 10, md: 14, lg: 20 }}
+          px={{ base: 10, md: 14, lg: 20 }}
+          alignItems="flex-end"
+          spacing="1px"
+          ref={ref}
+        >
+          {killfeed.map((killfeed, index) => (
+            <KillfeedItem kill={killfeed} key={index} />
+          ))}
+        </Stack>
       )}
-    </>
+    </Box>
   );
-};
+});
 
 export default Killfeed;

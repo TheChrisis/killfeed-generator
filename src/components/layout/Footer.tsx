@@ -21,7 +21,7 @@ const SocialButton = ({
   href: string;
 }) => {
   return (
-    <Tooltip label={label} hasArrow>
+    <Tooltip label={label} placement="top">
       <chakra.button
         bg={useColorModeValue('blackAlpha.100', 'whiteAlpha.100')}
         rounded={'full'}
@@ -48,9 +48,9 @@ const SocialButton = ({
 const Footer = () => {
   return (
     <Box
-      bg={useColorModeValue('gray.50', 'gray.900')}
+      bg={useColorModeValue('whiteAlpha.800', 'blackAlpha.800')}
       color={useColorModeValue('gray.700', 'gray.200')}
-      position="fixed"
+      position="absolute"
       bottom="0"
       left="0"
       right="0"

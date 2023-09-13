@@ -1,6 +1,7 @@
 type Killfeed = Array<Kill>;
 
 interface Kill {
+  id: string;
   killer: string;
   victim: string;
   weapon: Weapon;

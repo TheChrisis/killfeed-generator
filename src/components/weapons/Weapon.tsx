@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
 import { Weapon as WeaponComp } from '../../interfaces/killfeed.interface';
-import { Card, CardBody, Heading, Image } from '@chakra-ui/react';
+import { Box, Card, CardBody, Heading, Image } from '@chakra-ui/react';
+import useKillfeedStore from '../../stores/Killfeed.store';
+import WeaponImage from './WeaponImage';
 
 interface WeaponProps {
   weapon: WeaponComp;
@@ -8,22 +10,39 @@ interface WeaponProps {
 }
 
 const Weapon: FC<WeaponProps> = (prop) => {
+  const { activeKill } = useKillfeedStore();
+
   const theWeapon = prop.weapon;
   const { onWeaponSelect } = prop;
 
+  const isSelected = activeKill.weapon.name === theWeapon.name;
+
   return (
-    <Card
-      variant="outline"
+    <Box
+      as="button"
       onClick={() => onWeaponSelect(theWeapon)}
-      _hover={{ background: 'inherit', transition: 'background .3s', cursor: 'pointer' }}
+      bg={isSelected ? 'black' : 'gray.900'}
+      borderRadius="lg"
+      padding="2"
+      color="white"
+      transition="all 0.2s cubic-bezier(.08,.52,.52,1)"
+      _hover={{
+        bg: 'black',
+        transform: 'scale(1.1)',
+      }}
+      _focus={{
+        boxShadow: '0 0 1px 2px rgba(88, 144, 255, .75), 0 1px 1px rgba(0, 0, 0, .15)',
+      }}
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
     >
-      <CardBody>
-        <Image src={theWeapon.iconPath} alt="name" style={{ transform: 'scaleX(-1)' }} />
-        <Heading size="md" mt="5">
-          {theWeapon.name}
-        </Heading>
-      </CardBody>
-    </Card>
+      <WeaponImage weapon={theWeapon} />
+      <Heading size="md" mt="5">
+        {theWeapon.name}
+      </Heading>
+    </Box>
   );
 };
 
