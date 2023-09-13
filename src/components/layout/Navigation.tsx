@@ -24,7 +24,7 @@ const headlineMap = {
   apex: 'Apex Legends',
 };
 
-const logoPath = '/src/assets/logo/';
+const logoPath = 'logo/';
 
 const Navigation: FC<NavigationProps> = ({ logo, title }) => {
   const { colorMode, toggleColorMode } = useColorMode();
