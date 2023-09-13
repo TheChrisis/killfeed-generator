@@ -3,7 +3,6 @@ import { Kill } from '../../interfaces/killfeed.interface';
 import { Box, Stack } from '@chakra-ui/layout';
 import KillfeedItemContextMenu from './KillfeedItemContextMenu';
 import useKillfeedStore from '../../stores/Killfeed.store';
-import { Image } from '@chakra-ui/react';
 import WeaponImage from '../weapons/WeaponImage';
 
 interface KillfeedItemProps {

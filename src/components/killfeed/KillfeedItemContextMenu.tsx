@@ -1,4 +1,4 @@
-import { Button, IconButton, Stack, Tooltip, useColorModeValue, useToast } from '@chakra-ui/react';
+import { IconButton, Stack, Tooltip, useColorModeValue, useToast } from '@chakra-ui/react';
 import { FC } from 'react';
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons';
 import useKillfeedStore from '../../stores/Killfeed.store';

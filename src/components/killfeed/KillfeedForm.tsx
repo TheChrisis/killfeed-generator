@@ -1,4 +1,4 @@
-import React, { FC, createRef, useState } from 'react';
+import { FC, createRef, useState } from 'react';
 import {
   Box,
   Button,
@@ -40,10 +40,7 @@ const KillfeedForm: FC = () => {
   const { killfeed, addKillToFeed, activeKill, setActiveKill, resetActiveKill } =
     useKillfeedStore();
   const { isWeaponSelected } = useKillfeedComputedProperties();
-  const [storedKillfeed, setStoredKillfeed] = useLocalStorage<KillfeedType>(
-    LocalStorageKey.apex,
-    [],
-  );
+  const [, setStoredKillfeed] = useLocalStorage<KillfeedType>(LocalStorageKey.apex, []);
   const {
     isOpen: isWeaponModalOpen,
     onOpen: onWeaponModalOpen,

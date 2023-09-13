@@ -1,4 +1,4 @@
-import { Box, Container, useColorModeValue } from '@chakra-ui/react';
+import { Box, Container } from '@chakra-ui/react';
 import Footer from './components/layout/Footer';
 import Navigation from './components/layout/Navigation';
 import KillfeedForm from './components/killfeed/KillfeedForm';

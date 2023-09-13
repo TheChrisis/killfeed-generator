@@ -1,8 +1,6 @@
 import {
   Button,
   ButtonGroup,
-  List,
-  ListItem,
   Modal,
   ModalBody,
   ModalCloseButton,

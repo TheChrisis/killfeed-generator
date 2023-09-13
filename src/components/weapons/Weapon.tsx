@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Weapon as WeaponComp } from '../../interfaces/killfeed.interface';
-import { Box, Card, CardBody, Heading, Image } from '@chakra-ui/react';
+import { Box, Heading } from '@chakra-ui/react';
 import useKillfeedStore from '../../stores/Killfeed.store';
 import WeaponImage from './WeaponImage';
 
