@@ -4,7 +4,7 @@ import Navigation from './components/layout/Navigation';
 import KillfeedForm from './components/killfeed/KillfeedForm';
 import { useEffect, useState } from 'react';
 
-const path = 'src/assets/backgrounds/';
+const path = '/src/assets/backgrounds/';
 const backgrounds = [
   `${path}caustic.jpg`,
   `${path}wraith.jpg`,

@@ -17,7 +17,7 @@ const Killfeed = React.forwardRef<HTMLDivElement, KillfeedProps>(({ killfeed }, 
 
   return (
     <Box
-      backgroundImage={'url(src/assets/backgrounds/kingscanyon.webp)'}
+      backgroundImage={'url(/src/assets/backgrounds/kingscanyon.webp)'}
       backgroundColor="transparent"
       backgroundRepeat="no-repeat"
       backgroundPosition="top right"
