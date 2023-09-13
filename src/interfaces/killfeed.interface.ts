@@ -5,6 +5,7 @@ interface Kill {
   victim: string;
   weapon: Weapon;
   killType: KillType;
+  yourKill?: boolean;
 }
 
 type KillKey = keyof Kill;
@@ -23,6 +24,6 @@ interface Weapon {
   iconPath: string;
 }
 
-type KillType = 'knockdown' | 'finish';
+type KillType = 'knockdown' | 'fullfinish';
 
 export type { Killfeed, Kill, Weapon, WeaponCategory, KillType, KillKey };

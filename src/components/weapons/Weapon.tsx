@@ -19,7 +19,7 @@ const Weapon: FC<WeaponProps> = (prop) => {
     >
       <CardBody>
         <Image src={theWeapon.iconPath} alt="name" style={{ transform: 'scaleX(-1)' }} />
-        <Heading size="md" marginTop={5}>
+        <Heading size="md" mt="5">
           {theWeapon.name}
         </Heading>
       </CardBody>
