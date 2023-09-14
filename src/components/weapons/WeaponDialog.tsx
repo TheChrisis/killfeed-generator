@@ -41,7 +41,12 @@ const WeaponDialog: FC<WeaponDialogProps> = ({ onClose, isOpen, setWeapon }) => 
   };
 
   return (
-    <Modal onClose={onClose} isOpen={isOpen} isCentered size="5xl">
+    <Modal
+      onClose={onClose}
+      isOpen={isOpen}
+      isCentered
+      size={{ base: 'full', sm: 'md', md: '3xl', lg: '5xl' }}
+    >
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>Choose Weapon</ModalHeader>

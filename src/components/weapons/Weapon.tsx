@@ -38,7 +38,7 @@ const Weapon: FC<WeaponProps> = (prop) => {
       justifyContent="center"
       alignItems="center"
     >
-      <WeaponImage weapon={theWeapon} />
+      <WeaponImage weapon={theWeapon} maxH="50" />
       <Heading size="md" mt="5">
         {theWeapon.name}
       </Heading>

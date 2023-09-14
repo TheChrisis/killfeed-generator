@@ -1,5 +1,6 @@
 import {
   Button,
+  ButtonGroup,
   Input,
   Modal,
   ModalBody,
@@ -34,13 +35,13 @@ const KillfeedEditDialog: FC<KillfeedEditDialogProps> = ({
   setImageSize,
 }) => {
   return (
-    <Modal onClose={onClose} isOpen={isOpen} isCentered size="lg">
+    <Modal onClose={onClose} isOpen={isOpen} isCentered size={{ base: 'sm', sm: 'sm', md: 'md' }}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>Edit Killfeed</ModalHeader>
-        <ModalCloseButton />
+        <ModalCloseButton onClick={onClose} />
         <ModalBody>
-          <Stack spacing="5">
+          <Stack spacing="4">
             <Input
               variant="filled"
               placeholder="Enter a filename (optional)"
@@ -60,7 +61,14 @@ const KillfeedEditDialog: FC<KillfeedEditDialogProps> = ({
           </Stack>
         </ModalBody>
         <ModalFooter>
-          <Button onClick={onConfirm}>Download Killfeed</Button>
+          <ButtonGroup>
+            <Button onClick={onConfirm} variant="solid">
+              Download Killfeed
+            </Button>
+            <Button onClick={onClose} variant="outline">
+              Close
+            </Button>
+          </ButtonGroup>
         </ModalFooter>
       </ModalContent>
     </Modal>

@@ -136,10 +136,10 @@ const KillfeedForm: FC = () => {
             <Button
               onClick={onWeaponModalOpen}
               flex="none"
-              maxWidth="100px"
+              maxWidth={{ lg: '100px' }}
               _light={{ bg: isWeaponSelected ? 'blackAlpha.800' : undefined }}
             >
-              {isWeaponSelected ? <WeaponImage weapon={activeKill.weapon} /> : 'Weapon'}
+              {isWeaponSelected ? <WeaponImage weapon={activeKill.weapon} maxH="8" /> : 'Weapon'}
             </Button>
           </Tooltip>
 
@@ -194,7 +194,7 @@ const KillfeedForm: FC = () => {
 
       <KillfeedEditDialog
         isOpen={isKillfeedEditOpen}
-        onClose={onKillfeedEditOpen}
+        onClose={onKillfeedEditClose}
         onConfirm={generateKillfeedImage}
         fileName={fileName}
         setFileName={setFileName}

@@ -30,8 +30,8 @@ const KillfeedItemContextMenu: FC<KillfeedItemContextMenuProps> = ({ kill }) => 
       direction="row"
       rowGap="3"
       position="absolute"
-      left="0"
-      top="-6px"
+      left={{ base: '50%', lg: 0 }}
+      top={{ base: 0, lg: '-6px' }}
       visibility="hidden"
       opacity="0"
       transition="opacity .3s"

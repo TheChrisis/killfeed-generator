@@ -40,7 +40,7 @@ const ChooseWeapon: FC<ChooseWeaponProps> = ({ setWeapon }) => {
       </Select>
 
       {weaponsWithIcons[selectedCategory] && (
-        <SimpleGrid spacing="4" columns={5}>
+        <SimpleGrid spacing="4" columns={{ base: 1, sm: 2, md: 4 }}>
           {weaponsWithIcons[selectedCategory].map((weapon) => (
             <Weapon key={weapon.name} weapon={weapon} onWeaponSelect={onWeaponSelect} />
           ))}

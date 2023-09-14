@@ -1,9 +1,9 @@
 import React from 'react';
 import { Killfeed as KillfeedType } from '../../interfaces/killfeed.interface';
 import { Box, Stack, Text } from '@chakra-ui/layout';
-import KillfeedItem from './KillfeedItem';
 import { useColorModeValue } from '@chakra-ui/color-mode';
 import { useKillfeedComputedProperties } from '../../stores/Killfeed.store';
+import KillfeedItemWrapper from './KillfeedItemWrapper';
 
 interface KillfeedProps {
   killfeed: KillfeedType;
@@ -26,8 +26,8 @@ const Killfeed = React.forwardRef<HTMLDivElement, KillfeedProps>(({ killfeed }, 
       borderRadius="lg"
       color={useColorModeValue('white', 'white')}
       height="500px"
-      overflowY="auto"
-      alignItems={hasNoKillfeedYet ? 'center' : 'flex-end'}
+      overflow="auto"
+      alignItems={hasNoKillfeedYet ? 'center' : undefined}
       justifyContent={hasNoKillfeedYet ? 'center' : undefined}
     >
       {hasNoKillfeedYet ? (
@@ -58,7 +58,7 @@ const Killfeed = React.forwardRef<HTMLDivElement, KillfeedProps>(({ killfeed }, 
           ref={ref}
         >
           {killfeed.map((killfeed, index) => (
-            <KillfeedItem kill={killfeed} key={index} />
+            <KillfeedItemWrapper kill={killfeed} key={index} />
           ))}
         </Stack>
       )}
